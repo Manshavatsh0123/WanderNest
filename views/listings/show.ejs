@@ -1,0 +1,133 @@
+<% layout('layouts/boilerplate') %>
+
+  <div class="container py-5">
+
+
+    <div class="row justify-content-center mb-4">
+      <div class="col-md-8 text-center">
+        <h1 class="fw-bold text-dark">
+          <%= listing.title %>
+        </h1>
+      </div>
+    </div>
+
+
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-10 col-lg-8">
+        <div class="card border-0 shadow-lg rounded-4 overflow-hidden position-relative">
+          <img src="<%= listing.image.url %>" alt="Listing Image" class="card-img-top object-fit-cover"
+            style="height: 280px;">
+
+          <button class="btn btn-light position-absolute top-0 end-0 m-3 rounded-circle shadow-sm">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+
+          <div class="card-body p-4">
+            <p class="text-muted mb-2 fs-6">Hosted by <span class="fw-medium"><i>
+                  <%= listing.owner.username %>
+                </i></span></p>
+            <p class="fs-5">
+              <%= listing.description %>
+            </p>
+
+            <div class="d-flex justify-content-between align-items-center mt-4">
+              <h4 class="text-danger fw-bold mb-0">&#8377; <%= listing.price.toLocaleString("en-IN") %>
+              </h4>
+              <p class="text-muted fw-medium mb-0">
+                <%= listing.location %>, <%= listing.country %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <% if(currUser && currUser._id.equals(listing.owner._id)) { %>
+      <div class="row justify-content-center mb-5">
+        <div class="col-md-6 d-flex gap-3">
+          <a href="/listings/<%= listing._id %>/edit" class="btn btn-outline-primary w-50 rounded-3 shadow-sm">Edit</a>
+          <form method="post" action="/listings/<%= listing._id %>?_method=DELETE" class="w-50">
+            <button class="btn btn-outline-danger w-100 rounded-3 shadow-sm">Delete</button>
+          </form>
+        </div>
+      </div>
+      <% } %>
+
+
+        <% if(currUser){ %>
+          <div class="row justify-content-center my-5">
+            <div class="col-md-8 col-lg-6">
+              <div class="p-4 rounded-4 shadow-sm bg-white border">
+
+                <h4 class="text-center text-dark fw-semibold mb-4">Your Feedback Builds Better Stays!</h4>
+
+                <form action="/listings/<%= listing._id %>/reviews" method="post" novalidate>
+
+                  <!-- Star Rating -->
+                  <div class="mb-4">
+                    <label for="rating" class="form-label fw-medium">Rate Your Stay</label>
+                    <fieldset class="starability-slot">
+                      <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="0" checked
+                        aria-label="No rating." />
+                      <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                      <label for="first-rate1" title="Terrible">1 star</label>
+                      <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                      <label for="first-rate2" title="Not good">2 stars</label>
+                      <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                      <label for="first-rate3" title="Average">3 stars</label>
+                      <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                      <label for="first-rate4" title="Very good">4 stars</label>
+                      <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                      <label for="first-rate5" title="Amazing">5 stars</label>
+                    </fieldset>
+                  </div>
+
+                  <!-- Textarea -->
+                  <div class="mb-4">
+                    <label for="comment" class="form-label fw-medium">Your Review</label>
+                    <textarea name="review[comment]" id="comment" class="form-control rounded-3 shadow-sm" rows="4"
+                      placeholder="Share your experience..." required></textarea>
+                  </div>
+
+                  <!-- Submit -->
+                  <div class="d-grid">
+                    <button type="submit" class="btn btn-danger rounded-3 py-2">Submit Review</button>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+          <% } %>
+
+
+            <div class="row justify-content-center mt-5">
+              <div class="col-md-8">
+                <h4 class="text-center fw-semibold text-dark mb-4"> Guest Reviews</h4>
+                <div class="d-flex flex-column gap-4">
+                  <% for (review of listing.reviews) { %>
+                    <div class="card border-0 shadow rounded-4 p-4 bg-light-subtle">
+                      <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                          <h6 class="fw-semibold text-dark mb-1"><i class="fas fa-user-circle me-2 text-secondary"></i>
+                            <%= review.author.username %>
+                          </h6>
+                          <p class="text-muted fs-6 fst-italic mb-2"><i class="fas fa-quote-left me-1"></i>
+                            <%= review.comment %>
+                          </p>
+                          <p class="starability-result" data-rating="<%= review.rating %>"></p>
+                        </div>
+                        <form method="post"
+                          action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
+                          <button class="btn btn-sm btn-outline-danger rounded-pill px-3">Delete</button>
+                        </form>
+                      </div>
+                    </div>
+                    <% } %>
+                </div>
+              </div>
+            </div>
+
+
+  </div>

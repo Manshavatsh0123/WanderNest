@@ -1,0 +1,77 @@
+<% layout('layouts/boilerplate') %>
+
+  <body style="background: #ffffff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card border-0 shadow-sm rounded-4 p-5">
+            <h1 class="text-center mb-4" style="font-weight:600; color: #222;">List Your Space</h1>
+            <p class="text-center mb-5" style="font-size: 1.1rem; color: #717171;">Earn money by sharing your place.
+              It's easy and free to get started.</p>
+
+            <form method="post" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
+
+              <div class="mb-4">
+                <label for="title" class="form-label" style="font-weight:500;">Title</label>
+                <input name="listing[title]" type="text" placeholder="Catchy Title for Your Space"
+                  class="form-control rounded-3 py-2" required>
+                <div class="valid-feedback">Looks good!</div>
+              </div>
+
+              <div class="mb-4">
+                <label for="description" class="form-label" style="font-weight:500;">Description</label>
+                <textarea name="listing[description]" rows="4"
+                  placeholder="Describe the vibe, amenities, and highlights" class="form-control rounded-3 py-2"
+                  required></textarea>
+                <div class="invalid-feedback">Please provide a description.</div>
+              </div>
+
+              <div class="mb-4">
+                <label for="image" class="form-label fw-semibold">Upload Image</label>
+                <div class="input-group">
+                  <input 
+                    type="file" 
+                    class="form-control rounded-3 py-2" 
+                    name="listing[image]" 
+                    id="image"
+                    aria-describedby="imageHelp"
+                    required
+                  >
+                </div>
+                <div id="imageHelp" class="form-text">
+                  Accepted formats: JPG, PNG. Max size: 5MB.
+                </div>
+              </div>
+              
+              <div class="mb-4">
+                <label for="location" class="form-label" style="font-weight:500;">Location</label>
+                <input name="listing[location]" type="text" placeholder="E.g., Jaipur, Rajasthan"
+                  class="form-control rounded-3 py-2" required>
+                <div class="invalid-feedback">Location is required.</div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <label for="price" class="form-label" style="font-weight:500;">Price per Night (INR)</label>
+                  <input name="listing[price]" type="number" placeholder="e.g. 1200" class="form-control rounded-3 py-2"
+                    required>
+                  <div class="invalid-feedback">Please set a price.</div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                  <label for="country" class="form-label" style="font-weight:500;">Country</label>
+                  <input name="listing[country]" type="text" placeholder="E.g., India"
+                    class="form-control rounded-3 py-2" required>
+                  <div class="invalid-feedback">Country name is required.</div>
+                </div>
+              </div>
+
+              <div class="d-grid">
+                <button class="btn btn-danger btn-lg rounded-3 mt-3 py-2" type="submit">Get Started</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>

@@ -1,0 +1,309 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+    .footer ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    .footer a {
+        text-decoration: none;
+        color: #222;
+    }
+
+    .footer a:hover {
+        text-decoration: underline;
+    }
+
+
+    .footer {
+        background-color: #f7f7f7;
+        font-family: Arial, sans-serif;
+        color: #222;
+        padding: 40px 60px;
+        font-size: 14px;
+    }
+
+
+    .footer-inspiration {
+        margin-bottom: 40px;
+    }
+
+    .footer-inspiration h3 {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 24px;
+        color: #484848;
+    }
+
+    .category-columns {
+        display: flex;
+        gap: 60px;
+        flex-wrap: wrap;
+    }
+
+    .category {
+        flex: 3;
+        min-width: 200px;
+    }
+
+    .category-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: #717171;
+        letter-spacing: 0.5px;
+        margin-bottom: 16px;
+    }
+
+    .item {
+        padding: 12px 0;
+        border-bottom: 1px solid #eee;
+        transition: background-color 0.3s;
+        cursor: pointer;
+    }
+
+    .item:hover {
+        background-color: #f1f1f1;
+    }
+
+    .item h4 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: #222;
+    }
+
+    .item h6 {
+        margin: 4px 0 0;
+        font-size: 14px;
+        color: #717171;
+        font-weight: 400;
+    }
+
+    @media (max-width: 768px) {
+        .category-columns {
+            flex-direction: column;
+            gap: 30px;
+        }
+    }
+
+
+    .footer-middle {
+        display: flex;
+        justify-content: space-between;
+        gap: 60px;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+    }
+
+    .footer-section {
+        min-width: 180px;
+    }
+
+    .footer-section h4 {
+        font-weight: 700;
+        font-size: 16px;
+        margin-bottom: 12px;
+        color: #484848;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 10px;
+    }
+
+
+    hr {
+        border: none;
+        border-top: 1px solid #ddd;
+        margin-bottom: 30px;
+    }
+
+
+    .footer-top {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        font-size: 13px;
+        color: #717171;
+        margin-bottom: 20px;
+    }
+
+    .footer-top .left {
+        margin-bottom: 8px;
+    }
+
+    .footer-links {
+        display: flex;
+        gap: 20px;
+    }
+
+    .footer-links li a {
+        color: #717171;
+    }
+
+
+    .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: center;
+        font-size: 14px;
+        color: #717171;
+    }
+
+    .social-icons a {
+        margin-left: 20px;
+        color: #717171;
+        font-size: 20px;
+        transition: color 0.3s ease;
+    }
+
+    .social-icons a:first-child {
+        margin-left: 0;
+    }
+
+    .social-icons a:hover {
+        color: #222;
+    }
+
+    .language-currency {
+        margin-top: 10px;
+        min-width: 150px;
+        text-align: right;
+    }
+
+
+    @media (max-width: 768px) {
+        .footer-middle {
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .footer-top,
+        .footer-bottom {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .language-currency {
+            text-align: left;
+            margin-top: 0;
+        }
+
+        .footer-inspiration {
+            grid-template-columns: 1fr;
+        }
+
+        .footer-inspiration .category-header {
+            justify-content: flex-start;
+            gap: 40px;
+        }
+    }
+</style>
+
+<footer class="footer">
+    <div class="footer-inspiration">
+        <h3>Inspiration for future getaways</h3>
+
+        <div class="category-columns">
+            <div class="category">
+                <h5 class="category-title">Unique stays</h5>
+                <div class="item">
+                    <h4>Yurt Rentals</h4>
+                    <h6>United States</h6>
+                </div>
+                <div class="item">
+                    <h4>Treehouse Stays</h4>
+                    <h6>United Kingdom</h6>
+                </div>
+                <div class="item">
+                    <h4>Beach Houses</h4>
+                    <h6>United Kingdom</h6>
+                </div>
+            </div>
+
+            <div class="category">
+                <h5 class="category-title">Categories</h5>
+                <div class="item">
+                    <h4>Cabin Rentals</h4>
+                    <h6>United Kingdom</h6>
+                </div>
+                <div class="item">
+                    <h4>Lakefront Homes</h4>
+                    <h6>United Kingdom</h6>
+                </div>
+                <div class="item">
+                    <h4>Cottage Rentals</h4>
+                    <h6>United Kingdom</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-middle">
+        <div class="footer-section">
+            <h4>Support</h4>
+            <ul>
+                <li><a href="/help">Help Centre</a></li>
+                <li><a href="#">AirCover</a></li>
+                <li><a href="#">Anti-discrimination</a></li>
+                <li><a href="#">Disability Support</a></li>
+                <li><a href="#">Cancellation Options</a></li>
+                <li><a href="#">Report Neighbourhood Concern</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Hosting</h4>
+            <ul>
+                <li><a href="#">Airbnb Your Home</a></li>
+                <li><a href="#">AirCover for Hosts</a></li>
+                <li><a href="#">Hosting Resources</a></li>
+                <li><a href="#">Community Forum</a></li>
+                <li><a href="#">Hosting Responsibly</a></li>
+                <li><a href="#">Join a Free Hosting Class</a></li>
+                <li><a href="#">Find a Co-host</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Airbnb</h4>
+            <ul>
+                <li><a href="#">2025 Summer Release</a></li>
+                <li><a href="#">Newsroom</a></li>
+                <li><a href="#">New Features</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Investors</a></li>
+                <li><a href="#">Airbnb.org Emergency Stays</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="footer-top">
+        <div class="left">
+            &copy; 2025 WanderNust Pvt. Ltd.
+        </div>
+        <div class="right">
+            <ul class="footer-links">
+                <li><a href="/privacy">Privacy</a></li>
+                <li><a href="/terms">Terms</a></li>
+                <li><a href="#">Sitemap</a></li>
+                <li><a href="#">Company Details</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+        <div class="language-currency">
+            <span>English (IN)</span> | <span>₹ INR</span>
+        </div>
+    </div>
+</footer>

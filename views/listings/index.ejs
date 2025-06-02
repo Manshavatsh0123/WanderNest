@@ -1,0 +1,171 @@
+<% layout('layouts/boilerplate') %>
+    <style>
+        #filters {
+            display: flex;
+            align-items: center;
+            overflow-x: hidden;
+            /* allow horizontal scroll like Airbnb */
+            padding: 15px 20px;
+            gap: 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .filter {
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #717171;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            min-width: 72px;
+            padding-bottom: 1px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .filter i {
+            font-size: 20px;
+            margin-bottom: 6px;
+            color: inherit;
+        }
+
+        .filter:hover,
+        .filter.active {
+            color: #000;
+            border-bottom: 2px solid #000;
+            font-weight: 300;
+        }
+
+        .tax-toggle {
+            margin-left: auto;
+            white-space: nowrap;
+            font-size: 13px;
+            color: #222;
+            border: 1px solid #ddd;
+            border-radius: 9999px;
+            /* pill-shaped like Airbnb */
+            height: 40px;
+            padding: 6px 14px;
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .tax-info{
+            display: none;
+        }
+
+        .form-switch {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-check-label {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .toggle-title {
+            font-weight: 600;
+            font-size: 13px;
+            color: #222;
+        }
+
+        .toggle-subtitle {
+            font-size: 10px;
+            color: #717171;
+        }
+    </style>
+
+    <div id="filters">
+        <div class="filter active"><i class="fa-solid fa-house-chimney"></i>
+            <p>Farms</p>
+        </div>
+        <div class="filter"><i class="fa-solid fa-mountain-sun"></i>
+            <p>Cabins</p>
+        </div>
+        <div class="filter"><i class="fa-solid fa-binoculars"></i>
+            <p>Amazing views</p>
+        </div>
+        <div class="filter"><i class="fa-solid fa-city"></i>
+            <p>Iconic cities</p>
+        </div>
+        <div class="filter"><i class="fa-solid fa-water-ladder"></i>
+            <p>Pools</p>
+        </div>
+        <div class="filter"><i class="fa-solid fa-umbrella-beach"></i>
+            <p>Beachfront</p>
+        </div>
+        <div class="filter"><i class="fa-solid fa-tree"></i>
+            <p>Treehouses</p>
+        </div>
+        <div class="filter"><i class="fa-solid fa-hotel"></i>
+            <p>Luxury</p>
+        </div>
+        <div class="filter"><i class="fa-solid fa-globe"></i>
+            <p>World Views</p>
+        </div>
+        <div class="filter"><i class="fa-solid fa-water"></i>
+            <p>Lakefront</p>
+        </div>
+        <div class="filter"><i class="fa-solid fa-mug-saucer"></i>
+            <p>B&B</p>
+        </div>
+        <div class="filter"><i class="fa-solid fa-snowflake"></i>
+            <p>Arctic</p>
+        </div>
+
+        <div class="tax-toggle">
+            <div class="form-switch">
+                <input class="form-check-input" type="checkbox" id="switchCheckDefault">
+                <label class="form-check-label" for="switchCheckDefault">
+                    <span class="toggle-title">Total price</span>
+                    <span class="toggle-subtitle">Before taxes</span>
+                </label>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-3 mt-3">
+        <% for(let listing of allListing){ %>
+            <a class="listing-link" href="/listings/<%= listing._id %>">
+                <div class="card listing-card col ">
+                    <img src="<%= listing.image.url %>" class="card-img-top card-image mt-3" alt="listingimage"
+                        style="height: 20rem;">
+                    <div class="card-img-overlay"><i class="fa-regular fa-heart"></i></div>
+                    <div class="card-body mt-2">
+                        <p class="card-text">
+                            <b>
+                                <%= listing.title %>
+                            </b> <br>
+                            &#8377; <%= listing.price.toLocaleString("en-IN") %>
+                                <i class="tax-info"> &nbsp; &nbsp; +18% GST</i>
+                        </p>
+                    </div>
+                </div>
+            </a>
+            <% } %>
+    </div>
+    <script>
+        let taxSwitch = document.getElementById("switchCheckDefault");
+        taxSwitch.addEventListener("click", () => {
+            let taxInfo = document.getElementsByClassName("tax-info");
+            for (let info of taxInfo) {
+                const currentDisplay = window.getComputedStyle(info).display;
+                if (currentDisplay === "none") {
+                    info.style.display = "inline";
+                } else {
+                    info.style.display = "none";
+                }
+            }
+        });
+    </script>

@@ -1,0 +1,77 @@
+<% layout('layouts/boilerplate') %>
+
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card border-0 shadow-sm rounded-4 p-5">
+          <h1 class="text-center mb-4" style="font-weight:600; color:#222;">Update Your Space</h1>
+          <p class="text-center mb-5" style="font-size:1.1rem; color:#717171;">Make changes to your listing and keep it
+            fresh!</p>
+
+          <form method="post" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation"
+            enctype="multipart/form-data">
+
+            <div class="mb-4">
+              <label for="title" class="form-label" style="font-weight:500;">Title</label>
+              <input name="listing[title]" type="text" value="<%= listing.title %>" class="form-control rounded-3 py-2"
+                required>
+              <div class="invalid-feedback">Please enter a valid title.</div>
+            </div>
+
+            <div class="mb-4">
+              <label for="description" class="form-label" style="font-weight:500;">Description</label>
+              <textarea name="listing[description]" rows="4" class="form-control rounded-3 py-2"
+                required><%= listing.description %></textarea>
+              <div class="invalid-feedback">Please provide a description.</div>
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label" style="font-weight:500;">Original Listing Image</label>
+              <div class="card border-0 shadow-sm rounded-3 p-3">
+                <div class="text-center">
+                  <img src="<%= listing.image.url %>" alt="Listing image" class="img-fluid rounded-3 shadow-sm"
+                    style="max-width: 250px; max-height: 200px; object-fit: cover; transition: transform 0.3s ease-in-out;"
+                    onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                </div>
+              </div>
+            </div>
+
+
+            <div class="mb-4">
+              <label for="image" class="form-label" style="font-weight:500;">New Image URL</label>
+              <input name="listing[image]" type="file" class="form-control rounded-3 py-2">
+            </div>
+
+            <div class="mb-4">
+              <label for="location" class="form-label" style="font-weight:500;">Location</label>
+              <input name="listing[location]" type="text" value="<%= listing.location %>"
+                class="form-control rounded-3 py-2" required>
+              <div class="invalid-feedback">Please specify a valid location.</div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <label for="price" class="form-label" style="font-weight:500;">Price per Night (INR)</label>
+                <input name="listing[price]" type="number" value="<%= listing.price %>"
+                  class="form-control rounded-3 py-2" required>
+                <div class="invalid-feedback">Please enter a valid price.</div>
+              </div>
+
+              <div class="col-md-6 mb-4">
+                <label for="country" class="form-label" style="font-weight:500;">Country</label>
+                <input name="listing[country]" type="text" value="<%= listing.country %>"
+                  class="form-control rounded-3 py-2" required>
+                <div class="invalid-feedback">Please provide a valid country name.</div>
+              </div>
+            </div>
+
+            <div class="d-grid">
+              <button class="btn btn-danger btn-lg rounded-3 mt-3 py-2" type="submit">Update Listing</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
