@@ -19,7 +19,8 @@ const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
 
-let MONGO_URL = "mongodb://127.0.0.1:27017/WanderNest";
+let MONGO_URL = process.env.ATLASDB_URL || "mongodb://127.0.0.1:27017/WanderNest";
+
 main().then(() => {
   console.log("Connected to DB");
 }).catch(err => {
