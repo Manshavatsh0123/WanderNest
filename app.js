@@ -17,9 +17,9 @@ const User = require('./models/user.js');
 const listingRouter = require('./routes/listing.js');
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
+const port = process.env.PORT || 8080;
 
-
-let MONGO_URL = process.env.ATLASDB_URL || "mongodb://127.0.0.1:27017/WanderNest";
+let MONGO_URL = "mongodb://127.0.0.1:27017/WanderNest";
 
 main().then(() => {
   console.log("Connected to DB");
@@ -82,6 +82,6 @@ app.use((err, req, res, next) => {
 });
 
 
-app.listen(8080, () => {
-  console.log("Server is Listening to port 8080");
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
 });
