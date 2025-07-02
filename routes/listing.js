@@ -11,17 +11,21 @@ router
     .route("/")
     .get(wrapAsync(ListingController.index))
     .post(
-        isLoggedIn,
-        upload.single("listing[image]"),
-        (req, res, next) => {
-            if (req.file) {
-                req.body.listing.image = req.file.path;
-            }
-            next();
-        },
-        validateListing,
-        wrapAsync(ListingController.createListing)
-    );
+    isLoggedIn,
+    upload.single("listing[image]"),
+    (req, res, next) => {
+        if (req.file) {
+            req.body.listing.image = {
+                url: req.file.path,
+                filename: req.file.filename
+            };
+        }
+        next();
+    },
+    validateListing,
+    wrapAsync(ListingController.createListing)
+)
+
 
 //New Route
 router.get("/new", isLoggedIn, ListingController.renderNewForm);
