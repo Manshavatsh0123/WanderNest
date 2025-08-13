@@ -1,9 +1,23 @@
 <% layout('layouts/boilerplate') %>
+  <style>
+    .card {
+      padding: 1rem;
+      border-radius: 1.2rem;
+    }
+
+    .card hr {
+      opacity: 0.3;
+    }
+
+    .btn-light:hover {
+      background-color: #ffeaea;
+    }
+  </style>
 
   <div class="container py-5">
 
 
-    <div class="row justify-content-center mb-4">
+    <div class="row justify-content-center mb-3">
       <div class="col-md-8 text-center">
         <h1 class="fw-bold text-dark">
           <%= listing.title %>
@@ -14,26 +28,37 @@
 
     <div class="row justify-content-center mb-5">
       <div class="col-md-10 col-lg-8">
-        <div class="card border-0 shadow-lg rounded-4 overflow-hidden position-relative">
-          <img src="<%= listing.image.url %>" alt="Listing Image" class="card-img-top object-fit-cover"
-            style="height: 280px;">
+        <div class="card border-0 shadow-lg rounded-4 overflow-hidden position-relative p-2"
+          style="background-color: #ffffff;">
 
-          <button class="btn btn-light position-absolute top-0 end-0 m-3 rounded-circle shadow-sm">
-            <i class="fa-regular fa-heart"></i>
+          <img src="<%= listing.image.url %>" alt="Listing Image" class="card-img-top object-fit-cover"
+            style="height: 300px; border-radius: 1rem;">
+
+          <button class="btn btn-light position-absolute top-0 end-0 m-3 rounded-circle shadow-sm"
+            style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;">
+            <i class="fa-regular fa-heart fs-5 text-danger"></i>
           </button>
 
-          <div class="card-body p-4">
-            <p class="text-muted mb-2 fs-6">Hosted by <span class="fw-medium"><i>
+          <div class="card-body p-4" style="padding-top: 1.5rem; padding-bottom: 1.5rem;">
+
+            <p class="text-muted mb-3 fs-6">
+              Hosted by <span class="fw-medium"><i>
                   <%= listing.owner.username %>
-                </i></span></p>
-            <p class="fs-5">
+                </i></span>
+            </p>
+
+            <p class="fs-5 mb-4" style="line-height: 1.6;">
               <%= listing.description %>
             </p>
 
-            <div class="d-flex justify-content-between align-items-center mt-4">
-              <h4 class="text-danger fw-bold mb-0">&#8377; <%= listing.price.toLocaleString("en-IN") %>
+            <hr class="my-4">
+
+            <div class="d-flex justify-content-between align-items-center">
+              <h4 class="text-danger fw-bold mb-0">
+                &#8377; <%= listing.price.toLocaleString("en-IN") %>
               </h4>
               <p class="text-muted fw-medium mb-0">
+                <i class="fa-solid fa-location-dot me-1 text-secondary"></i>
                 <%= listing.location %>, <%= listing.country %>
               </p>
             </div>
@@ -41,6 +66,8 @@
         </div>
       </div>
     </div>
+
+
 
 
     <% if(currUser && currUser._id.equals(listing.owner._id)) { %>
@@ -64,7 +91,7 @@
 
                 <form action="/listings/<%= listing._id %>/reviews" method="post" novalidate>
 
-                  <!-- Star Rating -->
+
                   <div class="mb-4">
                     <label for="rating" class="form-label fw-medium">Rate Your Stay</label>
                     <fieldset class="starability-slot">
@@ -83,14 +110,14 @@
                     </fieldset>
                   </div>
 
-                  <!-- Textarea -->
+
                   <div class="mb-4">
                     <label for="comment" class="form-label fw-medium">Your Review</label>
                     <textarea name="review[comment]" id="comment" class="form-control rounded-3 shadow-sm" rows="4"
                       placeholder="Share your experience..." required></textarea>
                   </div>
 
-                  <!-- Submit -->
+
                   <div class="d-grid">
                     <button type="submit" class="btn btn-danger rounded-3 py-2">Submit Review</button>
                   </div>
