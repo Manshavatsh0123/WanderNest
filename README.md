@@ -2,7 +2,7 @@
 
 WanderNest is a full-stack travel and stay listing web application built with **Node.js** and **Express.js**.  
 It enables users to discover, share, and manage travel accommodations through a modern and user-friendly interface.
-
+![WanderNest Homepage](/images/WanderNestHero.png)
 ---
 
 ## Features
@@ -58,13 +58,13 @@ WanderNest/
 ```bash
 # git clone https://github.com/your-username/WanderNest.git
 
-2. **Go to project folder**
+2. Go to project folder
  - cd WanderNest
 
-3. **Install dependencies**
+3. Install dependencies
  - npm install
 
-4. **Create a .env file**
+4. Create a .env file
  - MONGO_URL=your_mongodb_url
  - CLOUDINARY_CLOUD_NAME=your_cloud_name
  - CLOUDINARY_KEY=your_key
