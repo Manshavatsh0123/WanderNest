@@ -1,13 +1,23 @@
-<% if(success && success.length){ %>
-    <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
-        <%= success %>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<% if (success && success.length) { %>
+    <div class="alert alert-success alert-dismissible fade show d-flex align-items-center col-6 offset-3 my-3" role="alert">
+        <svg xmlns="http://www.w3.org/2000/svg" class="bi flex-shrink-0 me-2" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM7 11l5-5-1.5-1.5L7 8l-1.5-1.5L4 8l3 3z"/>
+        </svg>
+        <div>
+            <%= success %>
+        </div>
+        <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 <% } %>
 
-<% if(error && error.length){ %>
-    <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
-        <%= error %>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<% if (error && error.length) { %>
+    <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center col-6 offset-3 my-3" role="alert">
+        <svg xmlns="http://www.w3.org/2000/svg" class="bi flex-shrink-0 me-2" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm-1-4h2v2H7v-2zm0-6h2v4H7V6z"/>
+        </svg>
+        <div>
+            <%= error %>
+        </div>
+        <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 <% } %>

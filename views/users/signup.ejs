@@ -1,29 +1,116 @@
 <% layout('layouts/boilerplate') %>
 
-<div class="row justify-content-center my-5">
-    <h1 class="text-center mb-4 fw-bold">Create Your WanderNest Account</h1>
-    <div class="col-md-6 col-lg-4">
-        <div class="card shadow p-4">
-            <form action="/signup" method="post" novalidate class="needs-validation">
+<style>
+    .auth-wrapper{
+        min-height:70vh;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+
+    .auth-card{
+        border-radius:12px;
+        border:1px solid #e5e7eb;
+        background:#fff;
+    }
+
+    .auth-title{
+        font-size:2rem;
+        font-weight:700;
+        margin-bottom:8px;
+    }
+
+    .auth-subtitle{
+        color:#6b7280;
+        font-size:0.95rem;
+        margin-bottom:25px;
+    }
+
+    .form-control{
+        height:44px;
+        border-radius:8px;
+    }
+
+    .form-label{
+        font-weight:500;
+        margin-bottom:6px;
+    }
+
+    /* GREEN SIGNUP BUTTON */
+    .btn-signup{
+        background:#198754;
+        border:none;
+        height:44px;
+        border-radius:8px;
+        font-weight:600;
+        color:white;
+    }
+
+    .btn-signup:hover{
+        background:#157347;
+    }
+</style>
+
+<div class="auth-wrapper mt-4 mb-4">
+    <div class="col-md-5 col-lg-4">
+        <div class="card auth-card shadow-sm p-4">
+
+            <h1 class="auth-title text-center">
+                Create Account
+            </h1>
+            <p class="auth-subtitle text-center">
+                Join WanderNest in seconds
+            </p>
+
+            <form action="/signup" method="post" novalidate>
+
+                
                 <div class="mb-3">
-                    <label for="username" class="form-label">Choose a Username</label>
-                    <input name="username" type="text" placeholder="Enter your username" id="username" class="form-control" required>
-                    <div class="valid-feedback">Great choice!</div>
+                    <label class="form-label">Username</label>
+                    <input 
+                        name="username"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter your username"
+                        required
+                    >
                 </div>
 
+                
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email Address</label>
-                    <input name="email" type="email" placeholder="Enter your email address" id="email" class="form-control" required>
-                    <div class="valid-feedback">Email looks good!</div>
+                    <label class="form-label">Email</label>
+                    <input 
+                        name="email"
+                        type="email"
+                        class="form-control"
+                        placeholder="Enter your email"
+                        required
+                    >
                 </div>
 
+                
                 <div class="mb-3">
-                    <label for="password" class="form-label">Create a Password</label>
-                    <input name="password" type="password" placeholder="Choose a strong password" id="password" class="form-control" required>
-                    <div class="valid-feedback">Nice and secure!</div>
+                    <label class="form-label">Password</label>
+                    <input 
+                        name="password"
+                        type="password"
+                        class="form-control"
+                        placeholder="Create a strong password"
+                        required
+                    >
                 </div>
 
-                <button class="btn btn-success w-100 mt-3">Get Started</button>
+                <button class="btn btn-signup w-100 mt-2">
+                    Get Started
+                </button>
+
+                <p class="text-center mt-3 small">
+                    Already have an account?
+                    <a href="/login" class="fw-semibold text-decoration-none">
+                        Login
+                    </a>
+                </p>
+
             </form>
         </div>
     </div>

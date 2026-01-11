@@ -77,91 +77,173 @@
         }
 
         .toggle-title {
-            font-weight: 600;
-            color: #222;
-            font-size: 13px;
+            font-size: 16px;
+            display: block;
+            margin-bottom: 4px;
         }
 
         .toggle-subtitle {
-            font-size: 11px;
-            color: #717171;
-            margin-top: 1px;
+            font-size: 14px;
+            font-weight: 500;
         }
+
+        .tax-info {
+            font-size: 12px;
+            color: #777;
+        }
+
+        .hero-section {
+            width: 100%;
+        }
+
+        .hero-bg {
+            height: 60vh;
+            width: 100%;
+            background-image: url('/images/WanderNestPage.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+        }
+
+        .hero-small {
+            letter-spacing: 5px;
+            font-size: 12px;
+            opacity: .9;
+            margin-bottom: 10px;
+        }
+
+        .hero-title {
+            font-size: 52px;
+            font-weight: 300;
+            margin-bottom: 8px;
+        }
+
+        .hero-sub {
+            letter-spacing: 3px;
+            font-size: 13px;
+            margin-bottom: 22px;
+            opacity: .9;
+        }
+
+        .listing-card {
+            border: none;
+            border-radius: 14px;
+            overflow: hidden;
+            transition: 0.25s ease;
+        }
+
+        /* .listing-card:hover {
+            transform: translateY(-3px);
+        } */
+
+        .card-image {
+            height: 18rem;
+            object-fit: cover;
+            border-radius: 14px;
+        }
+
+        .card-body {
+            padding: 10px 2px;
+        }
+
+        .card-text b {
+            font-size: 16px;
+            color: #222;
+        }
+
+        .card-text {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .tax-info {
+            font-size: 12px;
+            color: #888;
+        }
+        
     </style>
 
-    <div id="filters">
-        <div class="filter active"><i class="fa-solid fa-house-chimney"></i>
-            <p>Farms</p>
-        </div>
-        <div class="filter"><i class="fa-solid fa-mountain-sun"></i>
-            <p>Cabins</p>
-        </div>
-        <div class="filter"><i class="fa-solid fa-binoculars"></i>
-            <p>Amazing views</p>
-        </div>
-        <div class="filter"><i class="fa-solid fa-city"></i>
-            <p>Iconic cities</p>
-        </div>
-        <div class="filter"><i class="fa-solid fa-water-ladder"></i>
-            <p>Pools</p>
-        </div>
-        <div class="filter"><i class="fa-solid fa-umbrella-beach"></i>
-            <p>Beachfront</p>
-        </div>
-        <div class="filter"><i class="fa-solid fa-tree"></i>
-            <p>Treehouses</p>
-        </div>
-        <div class="filter"><i class="fa-solid fa-hotel"></i>
-            <p>Luxury</p>
-        </div>
-        <div class="filter"><i class="fa-solid fa-globe"></i>
-            <p>World Views</p>
-        </div>
-        <div class="filter"><i class="fa-solid fa-water"></i>
-            <p>Lakefront</p>
-        </div>
-        <div class="filter"><i class="fa-solid fa-mug-saucer"></i>
-            <p>B&B</p>
-        </div>
-        <div class="filter"><i class="fa-solid fa-snowflake"></i>
-            <p>Arctic</p>
-        </div>
+    <div class="hero-section full-width">
+        <div class="hero-bg">
 
-        <div class="tax-toggle">
-            <div class="form-switch">
-                <input class="form-check-input" type="checkbox" id="switchCheckDefault">
-                <label class="form-check-label" for="switchCheckDefault">
-                    <span class="toggle-title">Total price</span>
-                    <span class="toggle-subtitle">Before taxes</span>
-                </label>
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+
+                <p class="hero-small">WELCOME TO</p>
+
+                <h1 class="hero-title">WanderNest</h1>
+
+                <p class="hero-sub">Resort & Travel Stays</p>
             </div>
         </div>
-
-
     </div>
 
+    <div class="container mt-2">
+
+        <div class="text-center mt-4 mb-4">
+            <h3 class="fw-bold hero-title">Explore Our Stays</h3>
+            <p class="text-muted">
+                Discover comfortable and affordable places to stay
+            </p>
+        </div>
+
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4">
+
+            <% for(let listing of allListing){ %>
+
+                <div class="col">
+
+                    <a class="listing-link" href="/listings/<%= listing._id %>">
+
+                        <div class="card listing-card h-100">
+
+                            <img src="<%= listing.image.url %>" class="card-img-top card-image" style="height:20rem;">
+
+                            <div class="card-img-overlay">
+                                <i class="fa-regular fa-heart"></i>
+                            </div>
+
+                            <div class="card-body">
+
+                                <p class="card-text">
+                                    <b>
+                                        <%= listing.title %>
+                                    </b><br>
+                                    &#8377; <%= listing.price.toLocaleString("en-IN") %>/ night
+                                        <i class="tax-info"> +18% GST</i>
+                                </p>
+                            </div>
 
 
-    <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-3 mt-3">
-        <% for(let listing of allListing){ %>
-            <a class="listing-link" href="/listings/<%= listing._id %>">
-                <div class="card listing-card col ">
-                    <img src="<%= listing.image.url %>" class="card-img-top card-image mt-3" alt="listingimage"
-                        style="height: 20rem;">
-                    <div class="card-img-overlay"><i class="fa-regular fa-heart"></i></div>
-                    <div class="card-body mt-2">
-                        <p class="card-text">
-                            <b>
-                                <%= listing.title %>
-                            </b> <br>
-                            &#8377; <%= listing.price.toLocaleString("en-IN") %>/ night
-                                <i class="tax-info"> &nbsp; &nbsp; +18% GST</i>
-                        </p>
-                    </div>
+                        </div>
+
+                    </a>
+
                 </div>
-            </a>
-            <% } %>
+
+                <% } %>
+
+        </div>
+
+
     </div>
+
     <script>
         let taxSwitch = document.getElementById("switchCheckDefault");
         taxSwitch.addEventListener("click", () => {
