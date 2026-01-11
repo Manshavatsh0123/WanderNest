@@ -2,7 +2,6 @@
 
 WanderNest is a full-stack travel and stay listing web application built with **Node.js** and **Express.js**.  
 It enables users to discover, share, and manage travel accommodations through a modern and user-friendly interface.
-![WanderNest Homepage](/images/WanderNestHero.png)
 ---
 
 ## Features
